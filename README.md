@@ -31,7 +31,7 @@ SPIKE Checkoutデモサイト
 ----
 
 - 以下からダウンロード出来ます。
-  - https://github.com/metaps/spike-checkout
+  - https://github.com/metaps/spike-checkout-demo
 
 
 - [index.php](index.php)
