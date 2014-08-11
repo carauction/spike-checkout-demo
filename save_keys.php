@@ -11,4 +11,4 @@
 $_SESSION['secret_key']      = $_POST['secret_key'];
 $_SESSION['publishable_key'] = $_POST['publishable_key'];
 
-header('Location: payment_form.php');
+header('Location: menu.php');
