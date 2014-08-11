@@ -52,7 +52,7 @@ $signature = base64_encode(hash_hmac('sha256', json_decode($json), $data['secret
 
 if ($signature != $_SERVER['HTTP_X_SPIKE_WEBHOOK_SIGNATURE']) {
     header('HTTP/1.0 400 Bad Request');
-    print 'signature is invalid.';
+    print sprintf('signature is invalid. (received string:%s)', $_SERVER['HTTP_X_SPIKE_WEBHOOK_SIGNATURE']);
     exit;
 }
 
