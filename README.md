@@ -81,6 +81,7 @@ Webサーバを起動します。
   - マーチャントサイトでは受注完了ページの直前に当たる
 - [payment_finish.php](payment_finish.php)
   - REST APIでSPIKEへchargeメソッドを呼び出して課金を行う
+  - payment_form.phpページで取得した決済用tokenパラメータが必要です。
   - マーチャントサイトでは決済完了ページに当たる
 - [webhook.php](webhook.php)
   - WebhookのURLとして利用可能なエンドポイントURLを作成する(URLの有効期間は30分)
