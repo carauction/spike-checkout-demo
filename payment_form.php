@@ -23,6 +23,8 @@
 
 <h1>SPIKE Checkout demo</h1>
 
+  <noscript>Enable Javascript and reload this page.</noscript>
+
   <div class="row">
     <form action="payment_finish.php" method="post">
       <input id="token" type="hidden" name="token" value="">
