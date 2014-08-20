@@ -54,7 +54,6 @@ var handler = SpikeCheckout.configure({
 
 
 $('button[name="purchase"]').click(function(e) {
-  console.info();
     handler.open({
       name: "My Shop",
       amount: 900,
