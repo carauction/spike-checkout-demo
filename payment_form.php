@@ -61,7 +61,7 @@ $('button[name="purchase"]').click(function(e) {
       amount: 900,
       currency: "JPY",
       email: "foo@example.com",
-      guest: (e.target.dataset.buttonGuest == "0") ? false : true
+      guest: (e.target.dataset.getAttribute('buttonGuest') == "0") ? false : true
     });
   e.preventDefault();
 });
