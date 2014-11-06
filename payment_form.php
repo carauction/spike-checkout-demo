@@ -47,10 +47,10 @@ var handler = SpikeCheckout.configure({
     $('form').submit();
   },
   opened: function(e) {
-    console.log("Event: Overlay opened.");
+    // Event: Overlay opened
   },
   closed: function(e) {
-    console.log("Event: Overlay closed.");
+    // Event: Overlay closed
   }
 });
 
