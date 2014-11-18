@@ -23,14 +23,18 @@
 
 <h1>SPIKE Checkout demo</h1>
 
+<p>There some example code for SPIKE Checkout</p>
+
   <noscript>Enable Javascript and reload this page.</noscript>
 
   <div class="row">
     <form action="payment_finish.php" method="post">
       <input id="token" type="hidden" name="token" value="">
-      <button name="purchase" data-button-guest="0">Purchase</button>
+      <button name="purchase" id="button1">Purchase</button>
       <br>
-      <button name="purchase" data-button-guest="1">Purchase (Guest checkout)</button>
+      <button name="purchase" id="button2">Purchase (Guest checkout)</button>
+      <br>
+      <button name="purchase" id="button3">Purchase without amount option</button>
     </form>
   </div>
 
@@ -55,16 +59,40 @@ var handler = SpikeCheckout.configure({
 });
 
 
-$('button[name="purchase"]').click(function(e) {
+$('#button1').click(function(e) {
     handler.open({
-      name: "My Shop",
-      amount: 900,
+      name: "My Shop button 1",
+      amount: 1000,
       currency: "JPY",
       email: "foo@example.com",
-      guest: (e.target.getAttribute('data-button-guest') == "0") ? false : true
     });
   e.preventDefault();
 });
+
+
+$('#button2').click(function(e) {
+    handler.open({
+      name: "My Shop button 2",
+      amount: 2000,
+      currency: "JPY",
+      email: "foo@example.com",
+      guest: true
+    });
+  e.preventDefault();
+});
+
+
+$('#button3').click(function(e) {
+    handler.open({
+      name: "My Shop button 3",
+      currency: "JPY",
+      email: "foo@example.com",
+      guest: true
+    });
+  e.preventDefault();
+});
+
+
 </script>
 
 
