@@ -21,7 +21,7 @@
   </head>
   <body>
 
-<h1>SPIKE Checkout demo</h1>
+<h1>SPIKE Checkout and charge demo</h1>
 
 <p>There some example code for SPIKE Checkout</p>
 
@@ -46,6 +46,9 @@
 var handler = SpikeCheckout.configure({
   key: "<?php print htmlspecialchars(addslashes($_SESSION['publishable_key'])); ?>",
   token: function(token, args) {
+
+    alert(token.id);
+
     $("#customButton").attr('disabled', 'disabled');
     $(':input[type="hidden"][name="token"]').val(token.id);
     $('form').submit();
@@ -94,6 +97,17 @@ $('#button3').click(function(e) {
 
 
 </script>
+
+
+
+<h1>Charge API test</h1>
+
+  <div class="row">
+    <form action="payment_finish.php" method="post">
+      Token: <input type="text" name="token" value="">
+      <input type="submit" value="Charge" class="button">
+    </form>
+  </div>
 
 
 
