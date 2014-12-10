@@ -28,7 +28,7 @@
   <noscript>Enable Javascript and reload this page.</noscript>
 
   <div class="row">
-    <form action="payment_finish.php" method="post">
+    <form action="payment_finish.php" method="post" id="form_0d039227e6f414ea9a27f51c73dc7b133cd8b93a">
       <input id="token" type="hidden" name="token" value="">
       <button name="purchase" id="button1">Purchase</button>
       <br>
@@ -51,7 +51,7 @@ var handler = SpikeCheckout.configure({
 
     $("#customButton").attr('disabled', 'disabled');
     $(':input[type="hidden"][name="token"]').val(token.id);
-    $('form').submit();
+    $('form#form_0d039227e6f414ea9a27f51c73dc7b133cd8b93a').submit();
   },
   opened: function(e) {
     // Event: Overlay opened
@@ -103,7 +103,7 @@ $('#button3').click(function(e) {
 <h1>Charge API test</h1>
 
   <div class="row">
-    <form action="payment_finish.php" method="post">
+    <form action="payment_finish.php" method="post" id="form_f36c183a9ab68abf8a9a0583ab07a07a025903e7">
       Token: <input type="text" name="token" value="">
       <input type="submit" value="Charge" class="button">
     </form>
