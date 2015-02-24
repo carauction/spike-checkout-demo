@@ -50,16 +50,16 @@ $json = urldecode(file_get_contents('php://input'));
 // signature check
 $signature = base64_encode(hash_hmac('sha256', json_decode($json), $data['secret_key'], true));
 
+
+$data['body'] = $json;
+$redis->setex($storeKey, 60 * 60 * 12, serialize($data));
+
+
 if ($signature != $_SERVER['HTTP_X_SPIKE_WEBHOOK_SIGNATURE']) {
     header('HTTP/1.0 400 Bad Request');
     print sprintf('signature is invalid. (received:%s) (expected:%s)', $_SERVER['HTTP_X_SPIKE_WEBHOOK_SIGNATURE'], $signature);
     exit;
 }
-
-
-$data['body'] = $json;
-$redis->setex($storeKey, 60 * 60 * 12, serialize($data));
-
 
 header('HTTP/1.0 200 OK');
 print('OK');
