@@ -59,6 +59,7 @@ if (empty($_SESSION['secret_key'])) {
     $_SESSION['webhook_demo_key'] = $demoKey;
 
     require 'vendor/autoload.php';
+#    $_ENV['REDISCLOUD_URL']="http://:@127.0.0.1:6379";
     $redis = new Predis\Client(array(
         'host' => parse_url($_ENV['REDISCLOUD_URL'], PHP_URL_HOST),
         'port' => parse_url($_ENV['REDISCLOUD_URL'], PHP_URL_PORT),
@@ -97,11 +98,27 @@ if (empty($_SESSION['secret_key'])) {
 
       <?php if (empty($data) || empty($data['body'])) { ?>
 
-        <p>Data will be shown here if there is notification to the endpoint.</p>
+        <p>Waiting for webhook data.</p>
 
       <?php } else { ?>
 
+      <h4>Body</h4>
         <pre><code class="language-json"><?php $jsonPretty = new Camspiers\JsonPretty\JsonPretty; echo $jsonPretty->prettify(json_decode($data['body'])); ?></code></pre>
+
+
+      <h4>$_SERVER variable</h4>
+        <pre><code class="language-php"><?php print print_r(unserialize($data['server']), 1); ?></code></pre>
+
+
+      <h4>Signature</h4>
+        <dl>
+          <dt>Sent from SPIKE</dt>
+          <dd><?php print $data['signature_sent']; ?></dd>
+          <dt>Expected</dt>
+          <dd><?php print $data['signature_expected']; ?></dd>
+          <dt>Secret key</dt>
+          <dd><?php print $data['secret_key']; ?></dd>
+        </dl>
 
         <ul>
           <li>Endpoint URL is valid for 12 hours for security reason.</li>
@@ -110,12 +127,7 @@ if (empty($_SESSION['secret_key'])) {
 
       <?php } ?>
 
-      <h3>Request HTTP header</h3>
-      <pre><code class="language-php"><?php print print_r($$data['server'], 1); ?></code></pre>
-
-
     </div>
-
     <?php } ?>
 
 <?php
