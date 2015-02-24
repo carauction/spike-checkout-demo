@@ -51,7 +51,11 @@ $json = urldecode(file_get_contents('php://input'));
 $signature = base64_encode(hash_hmac('sha256', json_decode($json), $data['secret_key'], true));
 
 
-$data['body'] = $json;
+$data['body'] = array(
+  '_SERVER' => print_r($_SERVER, 1),
+  'body' => $json
+);
+
 $redis->setex($storeKey, 60 * 60 * 12, serialize($data));
 
 
