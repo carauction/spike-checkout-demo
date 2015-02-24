@@ -1,6 +1,6 @@
 {
   "require": {
-    "php": "~5.5.0",
+    "php": "~5.4.0",
     "curl/curl": "dev-master",
     "phpunit/phpunit": "4.1.*",
     "squizlabs/php_codesniffer": "1.*",
