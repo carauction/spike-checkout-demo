@@ -110,7 +110,12 @@ if (empty($_SESSION['secret_key'])) {
 
       <?php } ?>
 
+      <h3>Request HTTP header</h3>
+      <pre><code class="language-php"><?php print print_r($$data['server'], 1); ?></code></pre>
+
+
     </div>
+
     <?php } ?>
 
 <?php
