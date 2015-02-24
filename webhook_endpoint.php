@@ -39,7 +39,7 @@ $data = unserialize($value);
 
 if (empty($data['secret_key'])) {
     header('HTTP/1.0 400 Bad Request');
-    print 'webhook prepare is missing.';
+    print 'Re-create webhook URL and register the URL, then try again.';
     exit;
 }
 
@@ -52,7 +52,7 @@ $signature = base64_encode(hash_hmac('sha256', json_decode($json), $data['secret
 
 if ($signature != $_SERVER['HTTP_X_SPIKE_WEBHOOK_SIGNATURE']) {
     header('HTTP/1.0 400 Bad Request');
-    print sprintf('signature is invalid. (received string:%s)', $_SERVER['HTTP_X_SPIKE_WEBHOOK_SIGNATURE']);
+    print sprintf('signature is invalid. (received:%s) (expected:%s)', $_SERVER['HTTP_X_SPIKE_WEBHOOK_SIGNATURE'], $signature);
     exit;
 }
 
