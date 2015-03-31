@@ -49,7 +49,7 @@ if ($_SERVER['HTTP_X_FORWARDED_PROTO'] != 'https') {
   <hr>
   <footer>
     <div class="row">
-      <a href="https://github.com/metaps/spike-checkout-demo" target="_blank">spike-checkout-demo</a> version:1.1.0
+      <a href="https://github.com/metaps/spike-checkout-demo" target="_blank">spike-checkout-demo</a> version:1.2.0
     </div>
   </footer>
 

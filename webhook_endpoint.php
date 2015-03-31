@@ -46,12 +46,12 @@ if (empty($data['secret_key'])) {
 }
 
 
-$json = urldecode(file_get_contents('php://input'));
+$json = file_get_contents('php://input');
 
 
 
 // signature check
-$signature = base64_encode(hash_hmac('sha256', json_decode($json), $data['secret_key'], true));
+$signature = base64_encode(hash_hmac('sha256', $json, $data['secret_key'], true));
 
 $data['body'] = $json;
 $data['server'] = serialize($_SERVER);
